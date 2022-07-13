@@ -16,11 +16,11 @@
     </tr>
     <tr>
         <th>Price</th>
-        <td>@Model.Price.Value.ToString("C")</td>
+        <td>@Model.Price.ToString("C")</td>
     </tr>
     <tr>
         <th>Date Of Purchase</th>
-        <td>@Model.DateOfPurchase.Value.ToString("d/M/yyyy")</td>
+        <td>@Model.DateOfPurchase.ToString("d/M/yyyy")</td>
     </tr>
     <tr>
         <th>Availability Status</th>
@@ -43,4 +43,4 @@
         <td>@Model.Quantity</td>
     </tr>
 </table>
-<a href="/products/index">Back to Products</a>
+<a href="/products/index" class="btn btn-primary">Back to Products</a>

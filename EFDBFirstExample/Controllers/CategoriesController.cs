@@ -9,6 +9,7 @@ namespace EFDBFirstExample.Controllers
 {
     public class CategoriesController : Controller
     {
+        CompanyDBContext db = new CompanyDBContext();
         // GET: Categories
         public ActionResult Index()
         {
@@ -27,6 +28,20 @@ namespace EFDBFirstExample.Controllers
         {
             CompanyDBContext db = new CompanyDBContext();
             db.Categories.Add(c);
+            db.SaveChanges();
+            return RedirectToAction("Index", "Categories");
+        }
+        
+        public ActionResult Update(long id)
+        {
+            Category exsistingCategory = db.Categories.Where(temp => temp.CategoryID == id).FirstOrDefault();
+            return View(exsistingCategory);
+        }
+        [HttpPost]
+        public ActionResult Update(Category c)
+        {
+            Category exsistingCategory = db.Categories.Where(temp => temp.CategoryID == c.CategoryID).FirstOrDefault();
+            exsistingCategory.CategoryName = c.CategoryName;
             db.SaveChanges();
             return RedirectToAction("Index", "Categories");
         }

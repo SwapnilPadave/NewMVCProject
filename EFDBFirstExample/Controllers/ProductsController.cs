@@ -14,7 +14,7 @@ namespace EFDBFirstExample.Controllers
 {
     public class ProductsController : Controller
     {
-        CompanyDBContext db = new CompanyDBContext();
+            CompanyDBContext db = new CompanyDBContext();
         // GET: Products
         public ActionResult Index(string search="",string SortColumn="ProductName",string IconClass="fa-sort-asc",int PageNo=1)
         {            

@@ -1,0 +1,19 @@
+﻿@model EFDBFirstExample.Models.Category
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_LayoutPage2.cshtml";
+}
+
+<h2>Update</h2>
+<form action="/Categories/Update/@Model.CategoryID" method="post">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="CategoryName">Category Name</label>
+            <input type="hidden" name="CategoryID" value="@Model.CategoryID" />
+            <input type="text" class="form-control" id="CategoryName" name="CategoryName" placeholder="Category Name" value="@Model.CategoryName" />
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+    <a class="btn btn-danger" href="/Categories/Index">Cancel</a>
+</form>
+

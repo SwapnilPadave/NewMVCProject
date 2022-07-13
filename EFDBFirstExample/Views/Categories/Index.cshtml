@@ -15,12 +15,14 @@
     <tr>
         <th>Category Id</th>
         <th>Category Name</th>
+        <th>Action</th>
     </tr>
     @foreach (var item in Model)
     {
         <tr>
             <td>@item.CategoryID</td>
             <td>@item.CategoryName</td>
+            <td><a href="/Categories/Update/@item.CategoryID">Edit</a></td>
         </tr>
     }
 </table>
