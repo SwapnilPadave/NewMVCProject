@@ -190,7 +190,7 @@ namespace EFDBFirstExample.Controllers
             Product p = new Product();            
             QRCodeGenerator qRCodeGenerator = new QRCodeGenerator();
             QRCodeData qRCodeData = qRCodeGenerator.CreateQrCode("Your Booking No Is:-" + number.ToString() + " " + "Product ID:-" + existingProduct.ProductID + " " +"Product Name:-" + existingProduct.ProductName +
-                                                                 " " + "Price:-" + existingProduct.Price + " " + "Category ID:-" + existingProduct.Category.CategoryName + " " + "Brand ID:-" + existingProduct.Brand.BrandName,
+                                                                 " " + "Price:-" + existingProduct.Price + " " + "Category:-" + existingProduct.Category.CategoryName + " " + "Brand:-" + existingProduct.Brand.BrandName,
                                                                  QRCodeGenerator.ECCLevel.Q);            
             QRCode qRCode = new QRCode(qRCodeData);            
             using (MemoryStream ms = new MemoryStream())
