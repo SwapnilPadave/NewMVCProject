@@ -1,0 +1,27 @@
+﻿@model List<EFDBFirstExample.Models.Category>
+@{
+    ViewBag.Title = "Categories";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Categories</h2>
+<a href="/Categories/create">Create New Category</a>
+<form class="form-inline" action="/Categories/index">
+    <label for="Search">Search</label>
+    <input type="search" class="form-control" id="search" name="search" placeholder="Search by Category Name" value="@ViewBag.search" />
+    <button type="submit" class="btn btn-primary">Go</button>
+</form>
+<table class="table">
+    <tr>
+        <th>Category Id</th>
+        <th>Category Name</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.CategoryID</td>
+            <td>@item.CategoryName</td>
+        </tr>
+    }
+</table>
+

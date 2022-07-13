@@ -1,0 +1,30 @@
+﻿@model EFDBFirstExample.Models.Product
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutPage2.cshtml";
+}
+
+<h2>Delete</h2>
+<form action="/products/delete/@Model.ProductID" method="post">
+    <table class="table">
+        <tr>
+            <td>
+                <label for="ProductName">Product Name</label>
+            </td>
+            <td>
+                <input type="hidden" name="ProductID" value="@Model.ProductID" />@Model.ProductName
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="Price">Price</label>
+            </td>
+            <td>
+                @Model.Price
+            </td>
+        </tr>
+    </table>
+    <div>Are You Sure To Delete This Product</div>
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a class="btn btn-success" href="/products/index">Cancel</a>
+</form>

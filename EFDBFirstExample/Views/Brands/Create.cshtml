@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutPage2.cshtml";
+}
+
+<h2>Create New Brand</h2>
+<form action="/Brands/create" method="post">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="BrandName">Brand Name</label>
+            <input type="text" class="form-control" id="BrandName" name="BrandName" placeholder="Enter Brand Name" />
+
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+    <a class="btn btn-danger" href="/brands/index">Cancle</a>
+</form>
+
+
+
+
