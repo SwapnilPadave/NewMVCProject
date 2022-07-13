@@ -55,6 +55,11 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="QRCoder, Version=1.4.3.0, Culture=neutral, PublicKeyToken=c4ed5b9ae8358a28, processorArchitecture=MSIL">
+      <HintPath>..\packages\QRCoder.1.4.3\lib\net40\QRCoder.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -69,6 +74,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web.Razor">
@@ -258,6 +264,10 @@
     <Compile Include="Migrations\202207130508147_swapnil.Designer.cs">
       <DependentUpon>202207130508147_swapnil.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202207130941409_s.cs" />
+    <Compile Include="Migrations\202207130941409_s.Designer.cs">
+      <DependentUpon>202207130941409_s.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Brand.cs" />
     <Compile Include="Models\Category.cs" />
@@ -281,6 +291,7 @@
     <Content Include="Views\Products\Delete.cshtml" />
     <Content Include="Views\Brands\Create.cshtml" />
     <Content Include="Views\Categories\Create.cshtml" />
+    <Content Include="Views\Products\Booking.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -301,6 +312,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202207130508147_swapnil.resx">
       <DependentUpon>202207130508147_swapnil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207130941409_s.resx">
+      <DependentUpon>202207130941409_s.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
