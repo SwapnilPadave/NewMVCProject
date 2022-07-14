@@ -11,11 +11,18 @@ namespace EFDBFirstExample.Controllers
     {
         CompanyDBContext db = new CompanyDBContext();
         // GET: Categories
-        public ActionResult Index(string search = "")
+        public ActionResult Index(string search = "",int PageNo=1)
         {
             ViewBag.search = search;
-
             List<Category> categories = db.Categories.Where(temp => temp.CategoryName.Contains(search)).ToList();
+            int NoOfRecordPerPage = 5;
+            int NoOfPages = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(categories.Count) / Convert.ToDouble(NoOfRecordPerPage)));
+            int NoOfRecordToSkip = (PageNo - 1) * NoOfRecordPerPage;
+            ViewBag.PageNo = PageNo;
+            ViewBag.NoOfPages = NoOfPages;
+            categories = categories.Skip(NoOfRecordToSkip).Take(NoOfRecordPerPage).ToList();
+
+            
             return View(categories);
         }
         [HttpGet]

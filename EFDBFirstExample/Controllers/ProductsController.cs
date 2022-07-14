@@ -152,17 +152,28 @@ namespace EFDBFirstExample.Controllers
             return View(existingProduct);
         }
         [HttpPost]
-        public async Task< ActionResult> Edit(Product p)
-        {                        
+        public ActionResult Edit(Product p)
+        {
             Product existingProduct = db.Products.Where(temp => temp.ProductID == p.ProductID).FirstOrDefault();
+            //if (Request.Files.Count >= 1)
+            //{
+            //    var file = Request.Files[0];
+            //    var imgBytes = new Byte[file.ContentLength];
+            //    file.InputStream.Read(imgBytes, 0, file.ContentLength);
+            //    var base64String = Convert.ToBase64String(imgBytes, 0, imgBytes.Length);
+            //    existingProduct.Photo = base64String;
+            //    existingProduct.Photo = p.Photo;
+            //}
+            
             existingProduct.ProductName = p.ProductName;
             existingProduct.Price = p.Price;
             existingProduct.AvailabilityStatus = p.AvailabilityStatus;
             existingProduct.DateOfPurchase = p.DateOfPurchase;
+            
             existingProduct.CategoryID = p.CategoryID;
             existingProduct.BrandID = p.BrandID;
             existingProduct.Active = p.Active;
-            await db.SaveChangesAsync();
+            db.SaveChanges();
             return RedirectToAction("Index","Products");
         }
         public ActionResult Delete(long id)

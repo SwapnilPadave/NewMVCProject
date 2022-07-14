@@ -19,11 +19,45 @@
     </tr>
     @foreach (var item in Model)
     {
-        <tr>
-            <td>@item.CategoryID</td>
-            <td>@item.CategoryName</td>
-            <td><a href="/Categories/Update/@item.CategoryID">Edit</a></td>
-        </tr>
-    }
+<tr>
+    <td>@item.CategoryID</td>
+    <td>@item.CategoryName</td>
+    <td><a href="/Categories/Update/@item.CategoryID">Edit</a></td>
+</tr>}
+    <tr>
+        <td colspan="9">
+            @{ int PrevPageNo = ViewBag.PageNo - 1;
+                            if (PrevPageNo <= 0)
+                            {
+                                PrevPageNo = 1;
+                            }
+                            int NextPageNo = ViewBag.PageNo + 1;
+                            if (NextPageNo > ViewBag.NoOfPages)
+                            {
+                                NextPageNo = ViewBag.NoOfPages;
+                            } }
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" href="/Categories/index?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&PageNo=@PrevPageNo">Prev</a>
+                </li>
+                @for (int i = 0; i < ViewBag.NoOfPages; i++)
+                {
+                    if ((i + 1) == ViewBag.PageNo)
+                    {
+    <li class="page-item active">
+        <a class="page-link" href="/Categories/index?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&PageNo=@(i+1)">@(i+1)</a>
+    </li> }
+                    else
+                    {
+    <li class="page-item">
+        <a class="page-link" href="/Categories/index?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&PageNo=@(i+1)">@(i+1)</a>
+    </li>}
+                }
+                <li class="page-item">
+                    <a class="page-link" href="/Categories/index?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&PageNo=@NextPageNo">Next</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
 </table>
 
