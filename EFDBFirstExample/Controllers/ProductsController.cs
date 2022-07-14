@@ -108,7 +108,7 @@ namespace EFDBFirstExample.Controllers
                 }
             }
             //Paging
-            int NoOfRecordPerPage = 3;
+            int NoOfRecordPerPage = 5;
             int NoOfPages = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(products.Count) / Convert.ToDouble(NoOfRecordPerPage)));
             int NoOfRecordToSkip = (PageNo - 1) * NoOfRecordPerPage;
             ViewBag.PageNo = PageNo;
@@ -192,17 +192,25 @@ namespace EFDBFirstExample.Controllers
             QRCodeData qRCodeData = qRCodeGenerator.CreateQrCode("Your Booking No Is:-" + number.ToString() + " " + "Product ID:-" + existingProduct.ProductID + " " +"Product Name:-" + existingProduct.ProductName +
                                                                  " " + "Price:-" + existingProduct.Price + " " + "Category:-" + existingProduct.Category.CategoryName + " " + "Brand:-" + existingProduct.Brand.BrandName,
                                                                  QRCodeGenerator.ECCLevel.Q);            
-            QRCode qRCode = new QRCode(qRCodeData);            
-            using (MemoryStream ms = new MemoryStream())
-            {
-                using (Bitmap bitmap = qRCode.GetGraphic(20))
+            QRCode qRCode = new QRCode(qRCodeData);
+            MemoryStream ms = new MemoryStream();
+            
+                Bitmap bitmap = qRCode.GetGraphic(20);
                 {
                     bitmap.Save(ms, ImageFormat.Png);
                     ViewBag.QRCodeImage = "data:image/png;base64," + Convert.ToBase64String(ms.ToArray());
                     ViewBag.BookingId = number.ToString();                                           
                 }
-            }
+            
             return View();
         }
+        //public ActionResult BookingDetails(Product p)
+        //{
+        //    List<Product> products = db.Products.Where(temp => temp.ProductID == p.ProductID).ToList();
+
+        //    ViewBag.categories = db.Categories.ToList();
+        //    ViewBag.brands = db.Brands.ToList();
+        //    return View(products);
+        //}
     }
 }

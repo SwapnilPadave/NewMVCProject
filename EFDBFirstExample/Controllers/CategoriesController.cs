@@ -11,22 +11,21 @@ namespace EFDBFirstExample.Controllers
     {
         CompanyDBContext db = new CompanyDBContext();
         // GET: Categories
-        public ActionResult Index()
+        public ActionResult Index(string search = "")
         {
-            CompanyDBContext db = new CompanyDBContext();
-            List<Category> categories= db.Categories.ToList();
+            ViewBag.search = search;
+
+            List<Category> categories = db.Categories.Where(temp => temp.CategoryName.Contains(search)).ToList();
             return View(categories);
         }
         [HttpGet]
         public ActionResult Create()
-        {
-            CompanyDBContext db = new CompanyDBContext();
+        {           
             return View();
         }
         [HttpPost]
         public ActionResult Create(Category c)
-        {
-            CompanyDBContext db = new CompanyDBContext();
+        {           
             db.Categories.Add(c);
             db.SaveChanges();
             return RedirectToAction("Index", "Categories");
